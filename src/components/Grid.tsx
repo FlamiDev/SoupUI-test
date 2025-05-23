@@ -1,6 +1,6 @@
 import {Component, JSX} from "solid-js";
 import "../SoupUI.css"
-import {ContainerProps, Prettify} from "./helpers.js";
+import {ContainerProps} from "./helpers.js";
 
 interface GridProps extends ContainerProps {
     "cols"?: number | "auto";
@@ -38,7 +38,7 @@ export const Grid: Component<GridProps> = (props) => {
         style["grid-auto-flow"] = "dense";
     }
     return (
-        <div class={`container ${props.class}`} style={style}>
+        <div class={`soup-container ${props.class}`} style={style}>
             {props.children}
         </div>
     );

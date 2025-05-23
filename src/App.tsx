@@ -2,12 +2,19 @@ import {Component, createEffect, createSignal, For, JSXElement} from 'solid-js';
 import {Input} from './components/Input.tsx';
 import "./SoupUI.css"
 import {Grid} from "./components/Grid.js";
+import {Switch} from "./components/Switch.js";
+import {Button} from "./components/Button.js";
 
 const [inputValue, setInputValue] = createSignal("");
+const [switchValue, setSwitchValue] = createSignal(false);
+
 createEffect(() => console.log(inputValue()));
+createEffect(() => console.log(switchValue()));
 
 const elements: JSXElement[] = [
     <Input placeholder="Type something..." value={inputValue} setValue={setInputValue}/>,
+    <Switch name="Toggle me!" value={switchValue} setValue={setSwitchValue}/>,
+    <Button name="Click me!" onClick={() => console.log("Button clicked!")}/>,
 ]
 
 const App: Component = () => {
