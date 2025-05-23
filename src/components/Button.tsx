@@ -1,5 +1,5 @@
 import {Component} from "solid-js";
-import "../SoupUI.css"
+import "./Button.css"
 import {DefaultProps} from "./helpers.js";
 
 interface ButtonProps extends DefaultProps {

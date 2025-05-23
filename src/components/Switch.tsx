@@ -1,5 +1,5 @@
 import {Component} from "solid-js";
-import "../SoupUI.css"
+import "./Switch.css"
 import {DefaultProps} from "./helpers.js";
 
 interface SwitchProps extends DefaultProps {

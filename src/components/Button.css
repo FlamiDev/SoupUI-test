@@ -1,0 +1,17 @@
+@import "./Soup.css";
+
+.soup-button {
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+}
+
+.soup-button:hover:not(:disabled) {
+    background: black;
+    color: white;
+}
+
+.soup-button:active:not(:disabled) {
+    background: white;
+    color: black;
+    transition: none;
+}

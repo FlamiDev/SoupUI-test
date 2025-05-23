@@ -1,5 +1,5 @@
 import {Component, JSX} from "solid-js";
-import "../SoupUI.css"
+import "./Soup.css"
 import {ContainerProps} from "./helpers.js";
 
 interface GridProps extends ContainerProps {

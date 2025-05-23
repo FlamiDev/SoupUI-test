@@ -1,6 +1,5 @@
 import {Component, createEffect, createSignal, For, JSXElement} from 'solid-js';
 import {Input} from './components/Input.tsx';
-import "./SoupUI.css"
 import {Grid} from "./components/Grid.js";
 import {Switch} from "./components/Switch.js";
 import {Button} from "./components/Button.js";

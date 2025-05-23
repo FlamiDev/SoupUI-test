@@ -1,5 +1,5 @@
 import {Component} from "solid-js";
-import "../SoupUI.css"
+import "./Soup.css"
 import {DefaultProps} from "./helpers.js";
 
 interface InputProps extends DefaultProps {
