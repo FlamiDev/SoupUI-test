@@ -10,6 +10,6 @@ interface ButtonProps extends DefaultProps {
 export const Button: Component<ButtonProps> = (props) => {
     const {name, onClick} = props;
     return (
-        <button class="soup-element soup-button" onClick={onClick}>{name}</button>
+        <button class={`soup-element soup-button ${props.class}`} onClick={onClick}>{name}</button>
     );
 };

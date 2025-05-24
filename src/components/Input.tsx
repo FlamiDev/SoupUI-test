@@ -12,7 +12,7 @@ interface InputProps extends DefaultProps {
 export const Input: Component<InputProps> = (props) => {
     const {placeholder, type, value, setValue} = props;
     return (
-        <input class="soup-element" type={type ?? "text"} placeholder={placeholder} value={value?.()}
+        <input class={`soup-element ${props.class}`} type={type ?? "text"} placeholder={placeholder} value={value?.()}
                onInput={(e) => setValue?.(e.target.value)}/>
     );
 };
