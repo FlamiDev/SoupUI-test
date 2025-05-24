@@ -3,9 +3,11 @@ import {Input} from './components/Input.tsx';
 import {Grid} from "./components/Grid.js";
 import {Switch} from "./components/Switch.js";
 import {Button} from "./components/Button.js";
+import {Dropdown} from "./components/Dropdown.js";
 
 const [inputValue, setInputValue] = createSignal("");
 const [switchValue, setSwitchValue] = createSignal(false);
+const [selected, setSelected] = createSignal("Option A");
 
 createEffect(() => console.log(inputValue()));
 createEffect(() => console.log(switchValue()));
@@ -14,6 +16,11 @@ const elements: JSXElement[] = [
     <Input placeholder="Type something..." value={inputValue} setValue={setInputValue}/>,
     <Switch name="Toggle me!" value={switchValue} setValue={setSwitchValue}/>,
     <Button name="Click me!" onClick={() => console.log("Button clicked!")}/>,
+    <Dropdown
+        options={["Option A", "Option B", "Option C"]}
+        selected={selected}
+        setSelected={setSelected}
+    />
 ]
 
 const App: Component = () => {

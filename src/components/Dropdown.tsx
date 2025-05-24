@@ -1,0 +1,71 @@
+import {Component, createSignal, For} from "solid-js";
+import "./Dropdown.css"
+import {DefaultProps} from "./helpers.js";
+
+interface DropdownProps<TOption extends string> extends DefaultProps {
+    options: TOption[];
+    selected: () => NoInfer<TOption>;
+    setSelected: (value: NoInfer<TOption>) => void;
+}
+
+export const Dropdown: Component<DropdownProps<any>> = <TOption extends string>(props: DropdownProps<TOption>) => {
+    const [open, setOpen] = createSignal(false);
+    const [focusedIndex, setFocusedIndex] = createSignal(props.options.indexOf(props.selected()));
+
+    const toggle = (e: MouseEvent) => {
+        setOpen(!open())
+        setBorderRadius((e.target as HTMLDivElement).clientHeight / 2)
+    };
+
+    const select = (index: number) => {
+        props.setSelected(props.options[index]);
+        setOpen(false);
+        setFocusedIndex(index);
+    };
+
+    const handleKeyDown = (e: KeyboardEvent) => {
+        if (!open()) {
+            if (e.key === "Enter" || e.key === " ") {
+                e.preventDefault();
+                setOpen(true);
+            }
+            return;
+        }
+        if (e.key === "ArrowDown") {
+            e.preventDefault();
+            setFocusedIndex((prev) => (prev + 1) % props.options.length);
+        } else if (e.key === "ArrowUp") {
+            e.preventDefault();
+            setFocusedIndex((prev) => (prev - 1) % props.options.length);
+        } else if (e.key === "Enter" || e.key === " ") {
+            e.preventDefault();
+            select(focusedIndex());
+        }
+    }
+
+    let [borderRadius, setBorderRadius] = createSignal(0);
+
+    return (
+        <div class={`soup-dropdown soup-element ${open() ? "open" : ""}`} tabIndex={0} onFocus={() => setOpen(true)}
+             onBlur={() => setOpen(false)} onKeyDown={handleKeyDown}>
+            <div class="soup-dropdown-toggle" onClick={toggle}>
+                {props.selected()}
+                <span class="soup-dropdown-arrow">▼</span>
+            </div>
+            <div class="soup-dropdown-wrapper" style={{"border-radius": `${borderRadius()}px`}}>
+                <div class="soup-dropdown-menu" style={{"border-radius": `${borderRadius()}px`}}>
+                    <For each={props.options}>
+                        {(option, i) => (
+                            <div
+                                class={`soup-dropdown-option ${option === props.selected() ? "selected" : ""} ${focusedIndex() === i() ? "focused" : ""}`}
+                                onClick={() => select(i())}
+                            >
+                                {option}
+                            </div>
+                        )}
+                    </For>
+                </div>
+            </div>
+        </div>
+    );
+};

@@ -1,0 +1,66 @@
+@import "./Soup.css";
+
+.soup-dropdown {
+    position: relative;
+    user-select: none;
+}
+
+.soup-dropdown-toggle {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    gap: 8px;
+}
+
+.soup-dropdown-arrow {
+    font-size: 0.8em;
+    transition: transform 0.2s ease;
+}
+
+.soup-dropdown.open .soup-dropdown-arrow {
+    transform: rotate(180deg);
+}
+
+.soup-dropdown-wrapper {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    display: grid;
+    z-index: 5;
+    grid-template-rows: 0fr;
+    width: 100%;
+    margin-top: 12px;
+    background: white;
+    transition: grid-template-rows 0.2s ease;
+    overflow: hidden;
+}
+
+.soup-dropdown.open .soup-dropdown-wrapper {
+    grid-template-rows: 1fr;
+}
+
+.soup-dropdown-menu {
+    border: 3px solid black;
+    overflow: hidden;
+}
+
+.soup-dropdown-option {
+    display: block;
+    width: 100%;
+    padding: 8px 12px;
+    outline: none;
+    cursor: pointer;
+    appearance: none;
+    text-align: start;
+    transition: background 0.05s, color 0.05s;
+}
+
+.soup-dropdown-option:hover,
+.soup-dropdown-option:focus-visible,
+.soup-dropdown-option.focused,
+.soup-dropdown-option.selected {
+    background: black;
+    color: white;
+}
+
