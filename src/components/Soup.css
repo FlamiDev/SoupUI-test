@@ -11,6 +11,7 @@
 }
 
 .soup-element {
+    height: 2.5em;
     background: white;
     border-radius: 100000px;
     outline: none;

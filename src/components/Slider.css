@@ -1,0 +1,16 @@
+@import "./Soup.css";
+
+.soup-slider {
+    position: relative;
+    padding: 3px;
+}
+
+.soup-slider-fill {
+    --width: 0px;
+    width: calc(2.5em - 12px + ((100% - (2.5em - 12px)) * var(--width)));
+    height: 100%;
+    cursor: pointer;
+    background: black;
+    border-radius: 100000px;
+    transition: width 0.1s;
+}

@@ -4,10 +4,12 @@ import {Grid} from "./components/Grid.js";
 import {Switch} from "./components/Switch.js";
 import {Button} from "./components/Button.js";
 import {Dropdown} from "./components/Dropdown.js";
+import {Slider} from "./components/Slider.js";
 
 const [inputValue, setInputValue] = createSignal("");
 const [switchValue, setSwitchValue] = createSignal(false);
 const [selected, setSelected] = createSignal("Option A");
+const [sliderValue, setSliderValue] = createSignal(50);
 
 createEffect(() => console.log(inputValue()));
 createEffect(() => console.log(switchValue()));
@@ -20,7 +22,8 @@ const elements: JSXElement[] = [
         options={["Option A", "Option B", "Option C"]}
         selected={selected}
         setSelected={setSelected}
-    />
+    />,
+    <Slider value={sliderValue} setValue={setSliderValue}/>,
 ]
 
 const App: Component = () => {
