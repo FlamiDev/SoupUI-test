@@ -9,12 +9,16 @@ interface DropdownProps<TOption extends string> extends DefaultProps {
 }
 
 export const Dropdown: Component<DropdownProps<any>> = <TOption extends string>(props: DropdownProps<TOption>) => {
-    const [open, setOpen] = createSignal(false);
+    const [isOpen, setOpen] = createSignal(false);
     const [focusedIndex, setFocusedIndex] = createSignal(props.options.indexOf(props.selected()));
 
-    const toggle = (e: MouseEvent) => {
-        setOpen(!open())
+    const open = (e: Event) => {
+        setOpen(true)
         setBorderRadius((e.target as HTMLDivElement).clientHeight / 2)
+    };
+
+    const close = () => {
+        setOpen(false)
     };
 
     const select = (index: number) => {
@@ -24,7 +28,7 @@ export const Dropdown: Component<DropdownProps<any>> = <TOption extends string>(
     };
 
     const handleKeyDown = (e: KeyboardEvent) => {
-        if (!open()) {
+        if (!isOpen()) {
             if (e.key === "Enter" || e.key === " ") {
                 e.preventDefault();
                 setOpen(true);
@@ -46,9 +50,9 @@ export const Dropdown: Component<DropdownProps<any>> = <TOption extends string>(
     let [borderRadius, setBorderRadius] = createSignal(0);
 
     return (
-        <div class={`soup-dropdown soup-element ${open() ? "open" : ""}`} tabIndex={0} onFocus={() => setOpen(true)}
-             onBlur={() => setOpen(false)} onKeyDown={handleKeyDown}>
-            <div class="soup-dropdown-toggle" onClick={toggle}>
+        <div class={`soup-dropdown soup-element ${isOpen() ? "open" : ""}`} tabIndex={0} onFocus={open}
+             onBlur={close} onKeyDown={handleKeyDown}>
+            <div class="soup-dropdown-toggle" onClick={open}>
                 {props.selected()}
                 <span class="soup-dropdown-arrow">▼</span>
             </div>
