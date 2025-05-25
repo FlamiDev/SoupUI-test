@@ -50,7 +50,7 @@ export const Dropdown: Component<DropdownProps<any>> = <TOption extends string>(
     let [borderRadius, setBorderRadius] = createSignal(0);
 
     return (
-        <div class={`soup-dropdown soup-element ${isOpen() ? "open" : ""}`} tabIndex={0} onFocus={open}
+        <div class={`soup-dropdown soup-element ${isOpen() ? "open" : ""} ${props.class}`} tabIndex={0} onFocus={open}
              onBlur={close} onKeyDown={handleKeyDown}>
             <div class="soup-dropdown-toggle" onClick={open}>
                 {props.selected()}
