@@ -32,6 +32,7 @@
     width: 100%;
     margin-top: 12px;
     background: white;
+    border-radius: 1.25em;
     transition: grid-template-rows 0.2s ease;
     overflow: hidden;
 }
@@ -42,6 +43,7 @@
 
 .soup-dropdown-menu {
     border: 3px solid black;
+    border-radius: 1.25em;
     overflow: hidden;
 }
 

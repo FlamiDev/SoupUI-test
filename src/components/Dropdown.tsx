@@ -12,9 +12,8 @@ export const Dropdown: Component<DropdownProps<any>> = <TOption extends string>(
     const [isOpen, setOpen] = createSignal(false);
     const [focusedIndex, setFocusedIndex] = createSignal(props.options.indexOf(props.selected()));
 
-    const open = (e: Event) => {
+    const open = () => {
         setOpen(true)
-        setBorderRadius((e.target as HTMLDivElement).clientHeight / 2)
     };
 
     const close = () => {
@@ -47,8 +46,6 @@ export const Dropdown: Component<DropdownProps<any>> = <TOption extends string>(
         }
     }
 
-    let [borderRadius, setBorderRadius] = createSignal(0);
-
     return (
         <div class={`soup-dropdown soup-element ${isOpen() ? "open" : ""} ${props.class}`} tabIndex={0} onFocus={open}
              onBlur={close} onKeyDown={handleKeyDown}>
@@ -56,8 +53,8 @@ export const Dropdown: Component<DropdownProps<any>> = <TOption extends string>(
                 {props.selected()}
                 <span class="soup-dropdown-arrow">▼</span>
             </div>
-            <div class="soup-dropdown-wrapper" style={{"border-radius": `${borderRadius()}px`}}>
-                <div class="soup-dropdown-menu" style={{"border-radius": `${borderRadius()}px`}}>
+            <div class="soup-dropdown-wrapper">
+                <div class="soup-dropdown-menu">
                     <For each={props.options}>
                         {(option, i) => (
                             <div
