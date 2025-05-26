@@ -38,7 +38,7 @@ export const Grid: Component<GridProps> = (props) => {
         style["grid-auto-flow"] = "dense";
     }
     return (
-        <div class={`soup-container ${props.class}`} style={style}>
+        <div class={`soup-container ${props.class ?? ""}`} style={style}>
             {props.children}
         </div>
     );

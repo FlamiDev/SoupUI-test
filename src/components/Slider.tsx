@@ -90,7 +90,7 @@ export const Slider: Component<SliderProps> = (props) => {
     // noinspection JSUnusedAssignment
     return (
         <div
-            class="soup-slider soup-element"
+            class={`soup-slider soup-element ${props.class ?? ""}`}
             onMouseDown={props.interactive ? startDrag : undefined}
             onTouchStart={props.interactive ? startDrag : undefined}
             onKeyDown={props.interactive ? handleKeyDown : undefined}
