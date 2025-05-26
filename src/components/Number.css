@@ -1,0 +1,55 @@
+@import "./Soup.css";
+
+.soup-number-input {
+    display: flex;
+    flex-direction: row;
+    padding: 0;
+    overflow: hidden;
+}
+
+.soup-number-input:has(:focus-visible) {
+    animation: border-blink 1s infinite;
+}
+
+.soup-number-input span {
+    padding: 4px 12px;
+    font-weight: bolder;
+    text-align: center;
+    text-wrap: nowrap;
+}
+
+.soup-number-input .soup-number-min {
+    border-right: 3px solid black;
+}
+
+.soup-number-input .soup-number-max {
+    border-left: 3px solid black;
+}
+
+.soup-number-input input {
+    flex: 1;
+    width: 10px;
+    padding: 4px 12px;
+    text-align: right;
+    outline: none;
+}
+
+.soup-number-input button {
+    cursor: pointer;
+    aspect-ratio: 1;
+    border-left: 3px solid black;
+    padding: 4px;
+    text-align: center;
+    font-weight: bolder;
+}
+
+.soup-number-input button:hover:not(:disabled) {
+    background: black;
+    color: white;
+}
+
+.soup-number-input button:active:not(:disabled) {
+    background: white;
+    color: black;
+    transition: none;
+}
