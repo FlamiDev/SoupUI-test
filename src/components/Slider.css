@@ -21,10 +21,10 @@
 
 .soup-slider-fill.interactive::after {
     position: absolute;
-    top: calc(1.25em - 9px);
-    right: calc(1.25em - 9px);
-    width: 6px;
-    height: 6px;
+    top: calc(1.25em - 6px - 0.2em);
+    right: calc(1.25em - 6px - 0.2em);
+    width: 0.4em;
+    height: 0.4em;
     background: white;
     border-radius: 100000px;
     content: "";
