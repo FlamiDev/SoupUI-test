@@ -2,15 +2,15 @@
     box-sizing: border-box;
 }
 
-.soup-container, .soup-element {
+:where(.soup-container), :where(.soup-element) {
     border: 3px solid black;
 }
 
-.soup-container {
+:where(.soup-container) {
     padding: 8px;
 }
 
-.soup-element {
+:where(.soup-element) {
     height: 2.5em;
     background: white;
     border-radius: 100000px;
@@ -18,7 +18,7 @@
     padding: 4px 12px;
 }
 
-.soup-element:focus-visible {
+:where(.soup-element):focus-visible {
     animation: border-blink 1s infinite;
 }
 
