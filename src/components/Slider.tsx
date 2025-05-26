@@ -2,15 +2,29 @@ import {Component, onCleanup} from "solid-js";
 import "./Slider.css"
 import {DefaultProps} from "./helpers.js";
 
-interface SliderProps extends DefaultProps {
+interface SliderPropsBase extends DefaultProps {
     value: () => number;
-    setValue: (v: number) => void;
     min?: number;
     max?: number;
     step?: number;
 }
 
+interface InteractiveSliderProps extends SliderPropsBase {
+    setValue: (v: number) => void;
+    interactive?: true;
+}
+
+interface NonInteractiveSliderProps extends SliderPropsBase {
+    interactive: false;
+}
+
+type SliderProps = InteractiveSliderProps | NonInteractiveSliderProps;
+
 export const Slider: Component<SliderProps> = (props) => {
+    if (props.interactive === undefined) {
+        props.interactive = true; // Default to interactive if not specified
+    }
+
     const min = props.min ?? 0;
     const max = props.max ?? 100;
     const step = props.step ?? 5;
@@ -24,6 +38,7 @@ export const Slider: Component<SliderProps> = (props) => {
     const fraction = () => ((props.value() - min) / (max - min));
 
     const handleKeyDown = (e: KeyboardEvent) => {
+        if (!props.interactive) return;
         if (e.key === "ArrowLeft" || e.key === "ArrowDown") {
             e.preventDefault();
             props.setValue(clampStep(props.value() - step));
@@ -40,6 +55,7 @@ export const Slider: Component<SliderProps> = (props) => {
     }
 
     const updateFromDragging = (e: MouseEvent | TouchEvent) => {
+        if (!props.interactive) return;
         const rect = trackRef.getBoundingClientRect();
         // noinspection JSSuspiciousNameCombination
         const zeroWidth = rect.height;
@@ -53,6 +69,7 @@ export const Slider: Component<SliderProps> = (props) => {
     };
 
     const startDrag = (e: MouseEvent | TouchEvent) => {
+        if (!props.interactive) return;
         updateFromDragging(e);
         window.addEventListener("mousemove", updateFromDragging);
         window.addEventListener("touchmove", updateFromDragging);
@@ -61,6 +78,7 @@ export const Slider: Component<SliderProps> = (props) => {
     };
 
     const endDrag = () => {
+        if (!props.interactive) return;
         window.removeEventListener("mousemove", updateFromDragging);
         window.removeEventListener("touchmove", updateFromDragging);
         window.removeEventListener("mouseup", endDrag);
@@ -73,18 +91,18 @@ export const Slider: Component<SliderProps> = (props) => {
     return (
         <div
             class="soup-slider soup-element"
-            onMouseDown={startDrag}
-            onTouchStart={startDrag}
-            onKeyDown={handleKeyDown}
-            tabIndex={0}
+            onMouseDown={props.interactive ? startDrag : undefined}
+            onTouchStart={props.interactive ? startDrag : undefined}
+            onKeyDown={props.interactive ? handleKeyDown : undefined}
+            tabIndex={props.interactive ? 0 : undefined}
+            role={props.interactive ? "slider" : undefined}
             ref={trackRef}
-            role="slider"
             aria-valuemin={min}
             aria-valuemax={max}
             aria-valuenow={props.value()}
         >
             <div
-                class="soup-slider-fill"
+                class={`soup-slider-fill ${props.interactive ? "interactive" : ""}`}
                 style={{
                     "--width": fraction()
                 }}

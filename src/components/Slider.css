@@ -7,10 +7,25 @@
 
 .soup-slider-fill {
     --width: 0px;
+    position: relative;
     width: calc(2.5em - 12px + ((100% - (2.5em - 12px)) * var(--width)));
     height: 100%;
-    cursor: pointer;
     background: black;
     border-radius: 100000px;
     transition: width 0.1s;
+}
+
+.soup-slider-fill.interactive {
+    cursor: pointer;
+}
+
+.soup-slider-fill.interactive::after {
+    position: absolute;
+    top: calc(1.25em - 9px);
+    right: calc(1.25em - 9px);
+    width: 6px;
+    height: 6px;
+    background: white;
+    border-radius: 100000px;
+    content: "";
 }
