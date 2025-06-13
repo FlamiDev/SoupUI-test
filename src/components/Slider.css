@@ -5,6 +5,10 @@
     padding: 3px;
 }
 
+.soup-slider.interactive {
+    cursor: pointer;
+}
+
 .soup-slider-fill {
     --width: 0px;
     position: relative;
@@ -15,11 +19,7 @@
     transition: width 0.1s;
 }
 
-.soup-slider-fill.interactive {
-    cursor: pointer;
-}
-
-.soup-slider-fill.interactive::after {
+.soup-slider.interactive .soup-slider-fill::after {
     position: absolute;
     top: calc(1.25em - 6px - 0.2em);
     right: calc(1.25em - 6px - 0.2em);

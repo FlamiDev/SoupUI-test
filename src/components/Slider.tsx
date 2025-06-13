@@ -90,7 +90,7 @@ export const Slider: Component<SliderProps> = (props) => {
     // noinspection JSUnusedAssignment
     return (
         <div
-            class={`soup-slider soup-element ${props.class ?? ""}`}
+            class={`soup-slider soup-element ${props.class ?? ""} ${props.interactive ? "interactive" : ""}`}
             onMouseDown={props.interactive ? startDrag : undefined}
             onTouchStart={props.interactive ? startDrag : undefined}
             onKeyDown={props.interactive ? handleKeyDown : undefined}
@@ -102,7 +102,7 @@ export const Slider: Component<SliderProps> = (props) => {
             aria-valuenow={props.value()}
         >
             <div
-                class={`soup-slider-fill ${props.interactive ? "interactive" : ""}`}
+                class="soup-slider-fill"
                 style={{
                     "--width": fraction()
                 }}
