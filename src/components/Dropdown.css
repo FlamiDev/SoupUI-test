@@ -30,16 +30,19 @@
     display: grid;
     z-index: 5;
     grid-template-rows: 0fr;
-    width: 100%;
+    width: calc(100% + 6px - 2.5em);
+    margin-inline: calc(-3px + 1.25em);
     margin-top: 12px;
     background: white;
     border-radius: 1.25em;
-    transition: grid-template-rows 0.2s ease;
+    transition: all 0.2s ease;
     overflow: hidden;
 }
 
 .soup-dropdown.open .soup-dropdown-wrapper {
     grid-template-rows: 1fr;
+    width: calc(100% + 6px);
+    margin-inline: -3px;
 }
 
 .soup-dropdown-menu {
