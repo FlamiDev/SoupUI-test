@@ -17,18 +17,23 @@
     aspect-ratio: 1;
     background: black;
     border-radius: 50%;
-    transition: height 0.2s, top 0.2s, left 0.2s, background 0.2s;
-}
-
-.soup-switch:checked {
-    background: black;
+    transition: left 0.2s;
 }
 
 .soup-switch:checked::before {
-    height: 100%;
-    top: 0;
-    left: calc(50% - 6px);
-    background: white;
+    left: calc(50% - 4px);
+}
+
+.soup-switch::after {
+    content: "";
+    position: absolute;
+    top: calc(1.25em - 3px - 0.2em);
+    left: calc(1.25em - 3px - 0.2em);
+    width: 0.8em;
+    height: 0.4em;
+    background: black;
+    border-radius: 100000px;
+    transition: left 0.2s, background 0.2s;
 }
 
 .soup-switch-label {
