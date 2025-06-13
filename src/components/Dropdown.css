@@ -16,7 +16,7 @@
 
 .soup-dropdown-arrow {
     font-size: 0.8em;
-    transition: transform 0.2s ease;
+    transition: transform 0.2s ease-out;
 }
 
 .soup-dropdown.open .soup-dropdown-arrow {
@@ -35,7 +35,7 @@
     margin-top: 12px;
     background: white;
     border-radius: 1.25em;
-    transition: all 0.2s ease;
+    transition: all 0.2s ease-out;
     overflow: hidden;
 }
 
@@ -59,7 +59,7 @@
     cursor: pointer;
     appearance: none;
     text-align: start;
-    transition: background 0.05s, color 0.05s;
+    transition: background 0.05s ease-out, color 0.05s ease-out;
 }
 
 .soup-dropdown-option:hover,
