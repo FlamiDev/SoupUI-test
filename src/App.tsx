@@ -6,6 +6,7 @@ import {Button} from "./components/Button.js";
 import {Dropdown} from "./components/Dropdown.js";
 import {Slider} from "./components/Slider.js";
 import {Number} from "./components/Number.js";
+import {GenderPicker, GenderPickerValue} from "./components/GenderPicker.js";
 
 const App: Component = () => {
     const [inputValue, setInputValue] = createSignal("");
@@ -15,11 +16,13 @@ const App: Component = () => {
     const [slider2Value, setSlider2Value] = createSignal(50);
     const [numberValue, setNumberValue] = createSignal(0);
     const [number2Value, setNumber2Value] = createSignal(0);
+    const [genderPickerValue, setGenderPickerValue] = createSignal<null | GenderPickerValue>()
 
     createEffect(() => console.log(inputValue()));
     createEffect(() => console.log(switchValue()));
     createEffect(() => console.log(selected()));
     createEffect(() => console.log(sliderValue()));
+    createEffect(() => console.log(genderPickerValue()));
 
     setInterval(() => setSlider2Value(prev => (prev + 5) % 105), 500);
 
@@ -38,6 +41,7 @@ const App: Component = () => {
                 <Slider value={slider2Value} interactive={false}/>
                 <Number value={numberValue} setValue={setNumberValue}/>
                 <Number value={number2Value} setValue={setNumber2Value} min={0} max={10}/>
+                <GenderPicker setValue={setGenderPickerValue}/>
             </Grid>
         </div>
     );
