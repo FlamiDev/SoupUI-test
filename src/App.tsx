@@ -6,7 +6,7 @@ import {Button} from "./components/Button.js";
 import {Dropdown} from "./components/Dropdown.js";
 import {Slider} from "./components/Slider.js";
 import {Number} from "./components/Number.js";
-import {GenderPicker, GenderPickerValue} from "./components/GenderPicker.js";
+import {GenderPicker, Picker2DValue} from "./components/Picker2D.js";
 
 const App: Component = () => {
     const [inputValue, setInputValue] = createSignal("");
@@ -16,7 +16,7 @@ const App: Component = () => {
     const [slider2Value, setSlider2Value] = createSignal(50);
     const [numberValue, setNumberValue] = createSignal(0);
     const [number2Value, setNumber2Value] = createSignal(0);
-    const [genderPickerValue, setGenderPickerValue] = createSignal<null | GenderPickerValue>()
+    const [genderPickerValue, setGenderPickerValue] = createSignal<null | Picker2DValue>()
 
     createEffect(() => console.log(inputValue()));
     createEffect(() => console.log(switchValue()));

@@ -1,0 +1,66 @@
+@import "./Soup.css";
+
+.soup-picker2d {
+    height: 15em;
+    position: relative;
+    padding: 0;
+    overflow: hidden;
+    display: grid;
+    grid-template-rows: 1fr 2.5em;
+    grid-template-columns: 2.5em 1fr;
+    grid-template-areas:
+        "label-y picker"
+        "mode label-x";
+}
+
+.soup-picker2d-label-y {
+    grid-area: label-y;
+    border-right: 3px solid black;
+    writing-mode: vertical-rl;
+    padding: 12px 4px;
+}
+
+.soup-picker2d-label-x {
+    grid-area: label-x;
+    border-top: 3px solid black;
+    padding: 2px 12px;
+    text-align: end;
+}
+
+.soup-picker2d-mode-button {
+    grid-area: mode;
+    border-top: 3px solid black;
+    border-right: 3px solid black;
+    padding: 4px 12px;
+}
+
+.soup-picker2d-picker {
+    padding: 0;
+    position: relative;
+    width: 1fr;
+    height: 1fr;
+}
+
+.soup-picker2d-canvas {
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0.75;
+    cursor: crosshair;
+}
+
+.soup-picker2d-gradient {
+    --pos-x: 50%;
+    --pos-y: 50%;
+    --color: red;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(at var(--pos-x) var(--pos-y), var(--color), transparent 70%);
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 5;
+}
