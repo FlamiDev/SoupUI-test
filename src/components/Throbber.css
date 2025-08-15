@@ -1,0 +1,68 @@
+@import "./Soup.css";
+
+.soup-throbber {
+    position: relative;
+    width: calc(5em + 21px);
+}
+
+.soup-throbber::before,
+.soup-throbber::after {
+    content: "";
+    position: absolute;
+    left: 3px;
+    top: 3px;
+    width: calc(2.5em - 12px);
+    height: calc(2.5em - 12px);
+    background: black;
+    border-radius: 100000px;
+    animation: soup-throbber-ball-left 2s infinite cubic-bezier(.8,0,.2,1);
+}
+
+.soup-throbber::after {
+    left: calc(100% - 2.5em + 9px);
+    animation: soup-throbber-ball-right 2s infinite cubic-bezier(.8,0,.2,1);
+}
+
+/*
+keyframes:
+(*    )
+(  *  )
+(*    )
+(*    )
+*/
+@keyframes soup-throbber-ball-left {
+    0%, 100% {
+        left: 3px;
+    }
+    25% {
+        left: calc(50% - 1.25em + 6px);
+    }
+    50% {
+        left: 3px;
+    }
+    75% {
+        left: 3px;
+    }
+}
+
+/*
+keyframes:
+(    *)
+(    *)
+(    *)
+(  *  )
+*/
+@keyframes soup-throbber-ball-right {
+    0%, 100% {
+        left: calc(100% - 2.5em + 9px);
+    }
+    25% {
+        left: calc(100% - 2.5em + 9px);
+    }
+    50% {
+        left: calc(100% - 2.5em + 9px);
+    }
+    75% {
+        left: calc(50% - 1.25em + 6px);
+    }
+}

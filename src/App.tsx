@@ -7,6 +7,7 @@ import {Dropdown} from "./components/Dropdown.js";
 import {Slider} from "./components/Slider.js";
 import {Number} from "./components/Number.js";
 import {GenderPicker, Picker2DValue} from "./components/Picker2D.js";
+import {Throbber} from "./components/Throbber.js";
 
 const App: Component = () => {
     const [inputValue, setInputValue] = createSignal("");
@@ -42,6 +43,7 @@ const App: Component = () => {
                 <Number value={numberValue} setValue={setNumberValue}/>
                 <Number value={number2Value} setValue={setNumber2Value} min={0} max={10}/>
                 <GenderPicker setValue={setGenderPickerValue}/>
+                <Throbber/>
             </Grid>
         </div>
     );
