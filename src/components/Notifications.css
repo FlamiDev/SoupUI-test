@@ -1,0 +1,34 @@
+@import "./Soup.css";
+
+.soup-notifications-container {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    z-index: 1000;
+    max-width: 300px;
+    max-height: 100vh;
+    overflow-y: auto;
+    padding: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    align-items: flex-end;
+}
+
+.soup-notifications-message {
+    animation: soup-notifications-fade-out 5s forwards;
+    height: max-content;
+    min-height: 2.5em;
+}
+
+@keyframes soup-notifications-fade-out {
+    0% {
+        opacity: 1;
+    }
+    80% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
