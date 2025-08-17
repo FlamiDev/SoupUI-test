@@ -3,7 +3,7 @@ import "./Dropdown.css"
 import {DefaultProps} from "./helpers.js";
 
 interface DropdownProps<T extends Readonly<string[]>> extends DefaultProps {
-    readonly options: T;
+    options: Readonly<T>;
     selected: T[number];
     setSelected: (value: T[number]) => void;
 }

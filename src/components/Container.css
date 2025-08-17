@@ -1,0 +1,6 @@
+@import "./Soup.css";
+
+.soup-container {
+    border: 3px solid black;
+    padding: 8px;
+}

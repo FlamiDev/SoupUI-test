@@ -1,4 +1,4 @@
-import {ContainerProps} from "./helpers.js";
+import {ContainerProps} from "./Container.tsx";
 import {Component, JSX, Show} from "solid-js";
 import {Portal} from "solid-js/web";
 import {Button} from "./Button.js";
@@ -13,19 +13,22 @@ interface DialogProps extends ContainerProps {
 }
 
 export const Dialog: Component<DialogProps> = (props) => {
-    const style: JSX.CSSProperties = {
-        background: props.background ?? "white",
-    }
-    if (props.width) {
-        style.width = `${props.width}px`;
-    }
-    if (props.height) {
-        style.height = `${props.height}px`;
+    const style = () => {
+        const style: JSX.CSSProperties = {
+            background: props.background ?? "white",
+        }
+        if (props.width) {
+            style.width = `${props.width}px`;
+        }
+        if (props.height) {
+            style.height = `${props.height}px`;
+        }
+        return style;
     }
     return <Portal>
         <Show when={props.open}>
             <div class="soup-dialog-wrapper">
-                <div class={`soup-dialog ${props.class ?? ""}`} style={style}>
+                <div class={`soup-dialog ${props.class ?? ""}`} style={style()}>
                     {props.children}
                     <div class="soup-dialog-buttons">
                         <Show when={props.negativeText}>

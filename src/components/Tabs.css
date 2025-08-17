@@ -1,0 +1,39 @@
+@import "./Soup.css";
+
+.soup-tabs-container {
+    border: 3px solid black;
+}
+
+.soup-tabs-header {
+    --tabs-count: 0;
+    --tab-active: 0;
+    --tab-width: calc(100% / var(--tabs-count));
+    position: relative;
+    border-bottom: 3px solid black;
+    background-color: black;
+    padding: 4px 8px;
+    display: flex;
+    gap: 8px;
+    height: 2.5em;
+}
+
+.soup-tabs-header::before {
+    content: "";
+    position: absolute;
+    height: 100%;
+    width: var(--tab-width);
+    top: 0;
+    left: calc(var(--tab-width) * var(--tab-active));
+    background-color: white;
+    transition: left 0.2s;
+}
+
+.soup-tabs-button {
+    flex: 1;
+    mix-blend-mode: difference;
+    color: white;
+}
+
+.soup-tabs-content {
+    padding: 8px;
+}

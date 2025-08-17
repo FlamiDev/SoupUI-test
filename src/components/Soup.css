@@ -2,15 +2,8 @@
     box-sizing: border-box;
 }
 
-:where(.soup-container), :where(.soup-element) {
-    border: 3px solid black;
-}
-
-:where(.soup-container) {
-    padding: 8px;
-}
-
 :where(.soup-element) {
+    border: 3px solid black;
     height: 2.5em;
     background: white;
     border-radius: 1.25em;

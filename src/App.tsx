@@ -10,6 +10,7 @@ import {GenderPicker, Picker2DValue} from "./components/Picker2D.js";
 import {Throbber} from "./components/Throbber.js";
 import {Notifications, useNotifications} from "./components/Notifications.js";
 import {Dialog} from "./components/Dialog.js";
+import {Tabs} from "./components/Tabs.js";
 
 const Thingymabobs: Component = () => {
     const notify = useNotifications()
@@ -59,9 +60,12 @@ const App: Component = () => {
     return (
         <div class="h-screen w-screen bg-blue-300 flex items-center justify-center">
             <Notifications>
-                <Grid width={800} height={800} cols={2} rows={"auto"} compact>
-                    <Thingymabobs/>
-                </Grid>
+                <Tabs tabNames={["Main", "Test"]} width={800} height={800}>
+                    <Grid cols={2} rows={"auto"} compact>
+                        <Thingymabobs/>
+                    </Grid>
+                    <h1>Test tab</h1>
+                </Tabs>
             </Notifications>
         </div>
     );
