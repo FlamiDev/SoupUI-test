@@ -1,0 +1,32 @@
+@import "./Soup.css";
+
+.soup-dialog-wrapper {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100dvw;
+    height: 100dvh;
+    background-color: #00000055;
+    z-index: 999;
+}
+
+.soup-dialog {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 80dvw;
+    max-height: 80dvh;
+    z-index: 999;
+    border: 3px solid black;
+    padding: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.soup-dialog-buttons {
+    display: flex;
+    gap: 8px;
+}

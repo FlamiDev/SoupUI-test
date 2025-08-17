@@ -9,6 +9,7 @@ import {Number} from "./components/Number.js";
 import {GenderPicker, Picker2DValue} from "./components/Picker2D.js";
 import {Throbber} from "./components/Throbber.js";
 import {Notifications, useNotifications} from "./components/Notifications.js";
+import {Dialog} from "./components/Dialog.js";
 
 const Thingymabobs: Component = () => {
     const notify = useNotifications()
@@ -21,6 +22,7 @@ const Thingymabobs: Component = () => {
     const [numberValue, setNumberValue] = createSignal(0);
     const [number2Value, setNumber2Value] = createSignal(0);
     const [genderPickerValue, setGenderPickerValue] = createSignal<null | Picker2DValue>()
+    const [dialogOpen, setDialogOpen] = createSignal(false);
 
     createEffect(() => console.log(inputValue()));
     createEffect(() => console.log(switchValue()));
@@ -33,7 +35,7 @@ const Thingymabobs: Component = () => {
     return <>
         <Input placeholder="Type something..." value={inputValue} setValue={setInputValue}/>
         <Switch name="Toggle me!" value={switchValue} setValue={setSwitchValue}/>
-        <Button name="Click me!" onClick={() => console.log("Button clicked!")}/>
+        <Button name="Click me!" onClick={() => setDialogOpen(true)}/>
         <Dropdown
             options={["Option A", "Option B", "Option C"]}
             selected={selected}
@@ -45,6 +47,10 @@ const Thingymabobs: Component = () => {
         <Number value={number2Value} setValue={setNumber2Value} min={0} max={10}/>
         <GenderPicker setValue={setGenderPickerValue}/>
         <Throbber/>
+        <Dialog positiveText="Yeeee" negativeText="Nuuuu" open={dialogOpen()} setOpen={setDialogOpen}>
+            <Throbber/>
+            <Slider value={() => 8} interactive={false}/>
+        </Dialog>
     </>
 }
 
