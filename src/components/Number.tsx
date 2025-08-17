@@ -3,22 +3,21 @@ import "./Number.css"
 import {DefaultProps} from "./helpers.js";
 
 interface NumberProps extends DefaultProps {
-    value: () => number;
+    value: number;
     setValue: (value: number) => void;
     min?: number;
     max?: number;
 }
 
 export const Number: Component<NumberProps> = (props) => {
-    const {min, max, value, setValue} = props;
     const changeBy = (difference: number) => {
-        const newValue = value() + difference;
-        if (min !== undefined && newValue < min) {
-            setValue(min);
-        } else if (max !== undefined && newValue > max) {
-            setValue(max);
+        const newValue = props.value + difference;
+        if (props.min !== undefined && newValue < props.min) {
+            props.setValue(props.min);
+        } else if (props.max !== undefined && newValue > props.max) {
+            props.setValue(props.max);
         } else {
-            setValue(newValue);
+            props.setValue(newValue);
         }
     }
     const validateInput = (e: InputEvent) => {
@@ -33,30 +32,30 @@ export const Number: Component<NumberProps> = (props) => {
         }
         const newValue = +input.value;
         if (isNaN(newValue)) {
-            input.value = value().toString();
+            input.value = props.value.toString();
             return;
         }
         // Prevent scientific notation
         if (Math.abs(newValue) > 10e19) {
-            input.value = value().toString();
+            input.value = props.value.toString();
             return;
         }
-        if (min !== undefined && newValue < min) {
-            input.value = min.toString();
-            setValue(min);
-        } else if (max !== undefined && newValue > max) {
-            input.value = max.toString();
-            setValue(max);
+        if (props.min !== undefined && newValue < props.min) {
+            input.value = props.min.toString();
+            props.setValue(props.min);
+        } else if (props.max !== undefined && newValue > props.max) {
+            input.value = props.max.toString();
+            props.setValue(props.max);
         } else {
-            setValue(newValue);
+            props.setValue(newValue);
         }
     }
     return (
         <div class={`soup-element soup-number-input ${props.class ?? ""}`}>
-            {min !== undefined && <span class="soup-number-min">{min} &lt;</span>}
-            <input type="text" inputmode="numeric" value={value()}
+            {props.min !== undefined && <span class="soup-number-min">{props.min} &le;</span>}
+            <input type="text" inputmode="numeric" value={props.value}
                    onInput={validateInput}/>
-            {max !== undefined && <span class="soup-number-max">&lt; {max}</span>}
+            {props.max !== undefined && <span class="soup-number-max">&le; {props.max}</span>}
             <button tabIndex={-1} onClick={() => changeBy(-1)}>-</button>
             <button tabIndex={-1} onClick={() => changeBy(1)}>+</button>
         </div>

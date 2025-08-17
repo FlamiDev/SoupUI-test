@@ -26,7 +26,7 @@ export const Notifications: Component<NotificationsProps> = (props) => {
         <Portal>
             <div class="soup-notifications-container">
                 <For each={Object.values(notifications())}>{
-                    (message) => <div class={`soup-element soup-notifications-message ${props.class}`}>
+                    (message) => <div class={`soup-element soup-notifications-message ${props.class ?? ""}`}>
                         {message}
                     </div>
                 }</For>

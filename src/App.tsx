@@ -16,7 +16,8 @@ const Thingymabobs: Component = () => {
 
     const [inputValue, setInputValue] = createSignal("");
     const [switchValue, setSwitchValue] = createSignal(false);
-    const [selected, setSelected] = createSignal("Option A");
+    const dropdownOptions = ["Option A", "Option B", "Option C"] as const;
+    const [selected, setSelected] = createSignal<typeof dropdownOptions[number]>("Option A");
     const [sliderValue, setSliderValue] = createSignal(50);
     const [slider2Value, setSlider2Value] = createSignal(50);
     const [numberValue, setNumberValue] = createSignal(0);
@@ -33,23 +34,23 @@ const Thingymabobs: Component = () => {
     setInterval(() => setSlider2Value(prev => (prev + 5) % 105), 500);
 
     return <>
-        <Input placeholder="Type something..." value={inputValue} setValue={setInputValue}/>
-        <Switch name="Toggle me!" value={switchValue} setValue={setSwitchValue}/>
+        <Input placeholder="Type something..." value={inputValue()} setValue={setInputValue}/>
+        <Switch name="Toggle me!" value={switchValue()} setValue={setSwitchValue}/>
         <Button name="Click me!" onClick={() => setDialogOpen(true)}/>
         <Dropdown
-            options={["Option A", "Option B", "Option C"]}
-            selected={selected}
+            options={dropdownOptions}
+            selected={selected()}
             setSelected={setSelected}
         />
-        <Slider value={sliderValue} setValue={setSliderValue}/>
-        <Slider value={slider2Value} interactive={false}/>
-        <Number value={numberValue} setValue={setNumberValue}/>
-        <Number value={number2Value} setValue={setNumber2Value} min={0} max={10}/>
+        <Slider value={sliderValue()} setValue={setSliderValue}/>
+        <Slider value={slider2Value()} interactive={false}/>
+        <Number value={numberValue()} setValue={setNumberValue}/>
+        <Number value={number2Value()} setValue={setNumber2Value} min={0} max={10}/>
         <GenderPicker setValue={setGenderPickerValue}/>
         <Throbber/>
         <Dialog positiveText="Yeeee" negativeText="Nuuuu" open={dialogOpen()} setOpen={setDialogOpen}>
             <Throbber/>
-            <Slider value={() => 8} interactive={false}/>
+            <Slider value={15} interactive={false}/>
         </Dialog>
     </>
 }

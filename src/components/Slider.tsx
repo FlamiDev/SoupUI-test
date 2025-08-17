@@ -3,7 +3,7 @@ import "./Slider.css"
 import {DefaultProps} from "./helpers.js";
 
 interface SliderPropsBase extends DefaultProps {
-    value: () => number;
+    value: number;
     min?: number;
     max?: number;
     step?: number;
@@ -25,32 +25,32 @@ export const Slider: Component<SliderProps> = (props) => {
         props.interactive = true; // Default to interactive if not specified
     }
 
-    const min = props.min ?? 0;
-    const max = props.max ?? 100;
-    const step = props.step ?? 5;
+    const min = () => props.min ?? 0;
+    const max = () => props.max ?? 100;
+    const step = () => props.step ?? 5;
 
     let trackRef!: HTMLDivElement;
 
     const clampStep = (v: number) => {
-        const clamped = Math.min(max, Math.max(min, v));
-        return Math.round((clamped - min) / step) * step + min;
+        const clamped = Math.min(max(), Math.max(min(), v));
+        return Math.round((clamped - min()) / step()) * step() + min();
     }
-    const fraction = () => ((props.value() - min) / (max - min));
+    const fraction = () => ((props.value - min()) / (max() - min()));
 
     const handleKeyDown = (e: KeyboardEvent) => {
         if (!props.interactive) return;
         if (e.key === "ArrowLeft" || e.key === "ArrowDown") {
             e.preventDefault();
-            props.setValue(clampStep(props.value() - step));
+            props.setValue(clampStep(props.value - step()));
         } else if (e.key === "ArrowRight" || e.key === "ArrowUp") {
             e.preventDefault();
-            props.setValue(clampStep(props.value() + step));
+            props.setValue(clampStep(props.value + step()));
         } else if (e.key === "Home") {
             e.preventDefault();
-            props.setValue(min);
+            props.setValue(min());
         } else if (e.key === "End") {
             e.preventDefault();
-            props.setValue(max);
+            props.setValue(max());
         }
     }
 
@@ -63,7 +63,7 @@ export const Slider: Component<SliderProps> = (props) => {
             ? (e as TouchEvent).touches[0].clientX
             : (e as MouseEvent).clientX;
         const newValue = clampStep(
-            ((clientX - rect.left - (zeroWidth / 2)) / (rect.width - zeroWidth)) * (max - min) + min
+            ((clientX - rect.left - (zeroWidth / 2)) / (rect.width - zeroWidth)) * (max() - min()) + min()
         );
         props.setValue(newValue);
     };
@@ -95,11 +95,11 @@ export const Slider: Component<SliderProps> = (props) => {
             onTouchStart={props.interactive ? startDrag : undefined}
             onKeyDown={props.interactive ? handleKeyDown : undefined}
             tabIndex={props.interactive ? 0 : undefined}
-            role={props.interactive ? "slider" : undefined}
+            role={props.interactive ? "slider" : "progressbar"}
             ref={trackRef}
-            aria-valuemin={min}
-            aria-valuemax={max}
-            aria-valuenow={props.value()}
+            aria-valuemin={min()}
+            aria-valuemax={max()}
+            aria-valuenow={props.value}
         >
             <div
                 class="soup-slider-fill"

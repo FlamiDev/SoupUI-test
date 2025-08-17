@@ -1,16 +1,16 @@
-import {Component, createSignal, For} from "solid-js";
+import {createSignal, For} from "solid-js";
 import "./Dropdown.css"
 import {DefaultProps} from "./helpers.js";
 
-interface DropdownProps<TOption extends string> extends DefaultProps {
-    options: TOption[];
-    selected: () => NoInfer<TOption>;
-    setSelected: (value: NoInfer<TOption>) => void;
+interface DropdownProps<T extends Readonly<string[]>> extends DefaultProps {
+    readonly options: T;
+    selected: T[number];
+    setSelected: (value: T[number]) => void;
 }
 
-export const Dropdown: Component<DropdownProps<any>> = <TOption extends string>(props: DropdownProps<TOption>) => {
+export const Dropdown = <TOption extends Readonly<string[]>>(props: DropdownProps<TOption>) => {
     const [isOpen, setOpen] = createSignal(false);
-    const [focusedIndex, setFocusedIndex] = createSignal(props.options.indexOf(props.selected()));
+    const [focusedIndex, setFocusedIndex] = createSignal(props.options.indexOf(props.selected));
 
     const open = () => {
         setOpen(true)
@@ -50,7 +50,7 @@ export const Dropdown: Component<DropdownProps<any>> = <TOption extends string>(
         <div class={`soup-dropdown soup-element ${isOpen() ? "open" : ""} ${props.class ?? ""}`} tabIndex={0} onFocus={open}
              onBlur={close} onKeyDown={handleKeyDown}>
             <div class="soup-dropdown-toggle" onClick={open}>
-                {props.selected()}
+                {props.selected}
                 <span class="soup-dropdown-arrow">▼</span>
             </div>
             <div class="soup-dropdown-wrapper">
@@ -58,7 +58,7 @@ export const Dropdown: Component<DropdownProps<any>> = <TOption extends string>(
                     <For each={props.options}>
                         {(option, i) => (
                             <div
-                                class={`soup-dropdown-option ${option === props.selected() ? "selected" : ""} ${focusedIndex() === i() ? "focused" : ""}`}
+                                class={`soup-dropdown-option ${option === props.selected ? "selected" : ""} ${focusedIndex() === i() ? "focused" : ""}`}
                                 onClick={() => select(i())}
                             >
                                 {option}
