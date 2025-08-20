@@ -90,8 +90,8 @@ export const Picker2D: Component<Picker2DProps> = (props) => {
 
     const getPos = (e: PointerEvent | TouchEvent) => {
         const rect = canvasRef.getBoundingClientRect();
-        const x = (isTouchEvent(e) ? e.touches[0].clientX : e.clientX) - rect.left;
-        const y = (isTouchEvent(e) ? e.touches[0].clientY : e.clientY) - rect.top;
+        const x = (isTouchEvent(e) ? e.touches[0]!.clientX : e.clientX) - rect.left;
+        const y = (isTouchEvent(e) ? e.touches[0]!.clientY : e.clientY) - rect.top;
         return {x: x / canvasRef.width, y: y / canvasRef.height};
     };
 

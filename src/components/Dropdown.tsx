@@ -21,7 +21,7 @@ export const Dropdown = <TOption extends Readonly<string[]>>(props: DropdownProp
     };
 
     const select = (index: number) => {
-        props.setSelected(props.options[index]);
+        props.setSelected(props.options[index]!);
         setOpen(false);
         setFocusedIndex(index);
     };

@@ -14,7 +14,7 @@ import {
     Tabs,
     Throbber,
     useNotifications
-} from '../src/index.ts';
+} from 'src';
 
 const Thingymabobs: Component = () => {
     const notify = useNotifications()

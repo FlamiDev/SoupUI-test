@@ -60,7 +60,7 @@ export const Slider: Component<SliderProps> = (props) => {
         // noinspection JSSuspiciousNameCombination
         const zeroWidth = rect.height;
         const clientX = (e as TouchEvent).touches
-            ? (e as TouchEvent).touches[0].clientX
+            ? (e as TouchEvent).touches[0]!.clientX
             : (e as MouseEvent).clientX;
         const newValue = clampStep(
             ((clientX - rect.left - (zeroWidth / 2)) / (rect.width - zeroWidth)) * (max() - min()) + min()
