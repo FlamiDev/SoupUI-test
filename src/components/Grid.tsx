@@ -1,6 +1,6 @@
 import {Component, JSX, JSXElement} from "solid-js";
 import "./Soup.css"
-import {DefaultProps} from "./helpers.js";
+import {DefaultProps} from "./helpers.tsx";
 
 interface GridProps extends DefaultProps {
     children: JSXElement;

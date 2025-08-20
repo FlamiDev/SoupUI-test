@@ -1,5 +1,5 @@
 import {Component, createEffect, createSignal, onMount} from "solid-js";
-import {DefaultProps} from "./helpers.js";
+import {DefaultProps} from "./helpers.tsx";
 import "./Picker2D.css";
 
 export interface Picker2DValue {

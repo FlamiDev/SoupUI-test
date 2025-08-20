@@ -1,5 +1,47 @@
-* {
+/* some elements are adapted from tailwind's preflight style sheet */
+
+*,
+::after,
+::before,
+::backdrop,
+::file-selector-button {
     box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    border: 0 solid;
+}
+
+html {
+    line-height: 1.5;
+    -webkit-text-size-adjust: 100%;
+    font-family: ui-sans-serif, system-ui, sans-serif;
+    font-feature-settings: normal;
+    font-variation-settings: normal;
+    -webkit-tap-highlight-color: transparent;
+}
+
+a {
+    color: inherit;
+    text-decoration: inherit;
+}
+
+button,
+input,
+select,
+optgroup,
+textarea,
+::file-selector-button {
+    font: inherit;
+    font-feature-settings: inherit;
+    font-variation-settings: inherit;
+    letter-spacing: inherit;
+    color: inherit;
+    background-color: transparent;
+    opacity: 1;
+}
+
+::-webkit-search-decoration {
+    -webkit-appearance: none;
 }
 
 :where(.soup-element) {

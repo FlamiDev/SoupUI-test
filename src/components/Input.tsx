@@ -1,6 +1,6 @@
 import {Component} from "solid-js";
 import "./Soup.css"
-import {DefaultProps} from "./helpers.js";
+import {DefaultProps} from "./helpers.tsx";
 
 interface InputProps extends DefaultProps {
     placeholder?: string;

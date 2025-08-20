@@ -1,6 +1,6 @@
 import {Component} from "solid-js";
 import "./Throbber.css"
-import {DefaultProps} from "./helpers.js";
+import {DefaultProps} from "./helpers.tsx";
 
 export const Throbber: Component<DefaultProps> = (props) => {
     return (

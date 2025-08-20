@@ -1,6 +1,6 @@
 import {Component, JSX, JSXElement} from "solid-js";
 import "./Container.css"
-import {DefaultProps} from "./helpers.js";
+import {DefaultProps} from "./helpers.tsx";
 
 export interface ContainerProps extends DefaultProps {
     children: JSXElement;

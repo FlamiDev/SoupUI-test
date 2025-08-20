@@ -1,5 +1,5 @@
 import {Component, createContext, createSignal, For, JSXElement, useContext} from "solid-js";
-import {DefaultProps} from "./helpers.js";
+import {DefaultProps} from "./helpers.tsx";
 import {Portal} from "solid-js/web";
 import "./Notifications.css"
 

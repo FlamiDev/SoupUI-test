@@ -1,6 +1,6 @@
 import {Component} from "solid-js";
 import "./Switch.css"
-import {DefaultProps} from "./helpers.js";
+import {DefaultProps} from "./helpers.tsx";
 
 interface SwitchProps extends DefaultProps {
     name: string;

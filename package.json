@@ -1,23 +1,24 @@
 {
-  "name": "vite-template-solid",
-  "version": "0.0.0",
-  "description": "",
+  "name": "soup-ui",
+  "version": "1.0.0",
+  "description": "Cozy UI components for SolidJS",
+  "author": "FlamiDev",
   "type": "module",
+  "module": "src/index.ts",
+  "main": "src/index.ts",
+  "files": [
+    "src"
+  ],
   "scripts": {
-    "start": "vite",
-    "dev": "vite",
-    "build": "vite build",
-    "serve": "vite preview"
+    "dev": "vite ./dev/"
   },
   "license": "MIT",
   "devDependencies": {
-    "typescript": "^5.7.2",
-    "vite": "^6.0.0",
-    "vite-plugin-solid": "^2.11.6"
+    "typescript": "^5.9.2",
+    "vite": "^6.3.5",
+    "vite-plugin-solid": "^2.11.8"
   },
   "dependencies": {
-    "@tailwindcss/vite": "^4.1.3",
-    "solid-js": "^1.9.5",
-    "tailwindcss": "^4.1.3"
+    "solid-js": "^1.9.9"
   }
 }

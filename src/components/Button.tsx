@@ -1,6 +1,6 @@
 import {Component} from "solid-js";
 import "./Button.css"
-import {DefaultProps} from "./helpers.js";
+import {DefaultProps} from "./helpers.tsx";
 
 interface ButtonProps extends DefaultProps {
     name: string;

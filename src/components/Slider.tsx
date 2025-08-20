@@ -1,6 +1,6 @@
 import {Component, onCleanup} from "solid-js";
 import "./Slider.css"
-import {DefaultProps} from "./helpers.js";
+import {DefaultProps} from "./helpers.tsx";
 
 interface SliderPropsBase extends DefaultProps {
     value: number;

@@ -1,7 +1,7 @@
 import {ContainerProps} from "./Container.tsx";
 import {Component, JSX, Show} from "solid-js";
 import {Portal} from "solid-js/web";
-import {Button} from "./Button.js";
+import {Button} from "./Button.tsx";
 import "./Dialog.css"
 
 interface DialogProps extends ContainerProps {

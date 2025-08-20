@@ -1,6 +1,6 @@
 import {createSignal, For} from "solid-js";
 import "./Dropdown.css"
-import {DefaultProps} from "./helpers.js";
+import {DefaultProps} from "./helpers.tsx";
 
 interface DropdownProps<T extends Readonly<string[]>> extends DefaultProps {
     options: Readonly<T>;

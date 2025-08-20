@@ -1,6 +1,6 @@
 import {Component} from "solid-js";
 import "./Number.css"
-import {DefaultProps} from "./helpers.js";
+import {DefaultProps} from "./helpers.tsx";
 
 interface NumberProps extends DefaultProps {
     value: number;

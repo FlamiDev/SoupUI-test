@@ -1,16 +1,20 @@
 import {Component, createEffect, createSignal} from 'solid-js';
-import {Input} from './components/Input.tsx';
-import {Grid} from "./components/Grid.js";
-import {Switch} from "./components/Switch.js";
-import {Button} from "./components/Button.js";
-import {Dropdown} from "./components/Dropdown.js";
-import {Slider} from "./components/Slider.js";
-import {Number} from "./components/Number.js";
-import {GenderPicker, Picker2DValue} from "./components/Picker2D.js";
-import {Throbber} from "./components/Throbber.js";
-import {Notifications, useNotifications} from "./components/Notifications.js";
-import {Dialog} from "./components/Dialog.js";
-import {Tabs} from "./components/Tabs.js";
+import {
+    Button,
+    Dialog,
+    Dropdown,
+    GenderPicker,
+    Grid,
+    Input,
+    Notifications,
+    Number,
+    Picker2DValue,
+    Slider,
+    Switch,
+    Tabs,
+    Throbber,
+    useNotifications
+} from '../src/index.ts';
 
 const Thingymabobs: Component = () => {
     const notify = useNotifications()
@@ -57,8 +61,16 @@ const Thingymabobs: Component = () => {
 }
 
 const App: Component = () => {
+    const style = `
+    height: 100vh;
+    width: 100vw;
+    background-color: #5ad;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    `
     return (
-        <div class="h-screen w-screen bg-blue-300 flex items-center justify-center">
+        <div style={style}>
             <Notifications>
                 <Tabs tabNames={["Main", "Test"]} width={800} height={800}>
                     <Grid cols={2} rows={"auto"} compact>
