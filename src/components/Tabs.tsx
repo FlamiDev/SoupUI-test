@@ -2,13 +2,13 @@ import {ChildlessContainerProps} from "./Container.tsx";
 import {createMemo, For, JSX, JSXElement, Show} from "solid-js";
 import "./Tabs.css";
 
-interface TabsProps<T extends { [N in string]: JSXElement }> extends ChildlessContainerProps {
+interface TabsProps<K extends string, T extends { [N in K]: JSXElement }> extends ChildlessContainerProps {
     tabs: T;
-    activeTab: keyof T;
-    setActiveTab: (tab: keyof T) => void;
+    activeTab: K;
+    setActiveTab: (tab: K) => void;
 }
 
-export const Tabs = <T extends { [N in string]: JSXElement }>(props: TabsProps<T>) => {
+export const Tabs = <K extends string, T extends { [N in K]: JSXElement }>(props: TabsProps<K, T>) => {
     const style = () => {
         const style: JSX.CSSProperties = {
             background: props.background ?? "white",
@@ -22,7 +22,7 @@ export const Tabs = <T extends { [N in string]: JSXElement }>(props: TabsProps<T
         return style;
     }
 
-    const tabsEntries = createMemo(() => Object.entries(props.tabs));
+    const tabsEntries = createMemo(() => Object.entries(props.tabs) as [K, JSXElement][]);
     const activeTabIndex = () => tabsEntries().findIndex(([key]) => key === props.activeTab);
 
     const headerStyle = () => ({
