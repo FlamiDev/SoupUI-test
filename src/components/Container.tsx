@@ -15,10 +15,10 @@ export const Container: Component<ContainerProps> = (props) => {
             background: props.background ?? "white",
         }
         if (props.width) {
-            style["max-width"] = `${props.width}px`;
+            style.width = `${props.width}px`;
         }
         if (props.height) {
-            style["max-height"] = `${props.height}px`;
+            style.height = `${props.height}px`;
         }
         return style;
     }
