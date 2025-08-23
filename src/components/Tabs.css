@@ -37,4 +37,5 @@
 
 .soup-tabs-content {
     padding: 8px;
+    overflow-y: auto;
 }
