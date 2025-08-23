@@ -8,23 +8,14 @@
     "dist"
   ],
   "private": false,
-  "sideEffects": false,
+  "sideEffects": true,
   "type": "module",
   "main": "./dist/index.js",
   "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "browser": {},
   "exports": {
-    "solid": {
-      "development": "./dist/dev.jsx",
-      "import": "./dist/index.jsx"
-    },
-    "development": {
-      "import": {
-        "types": "./dist/index.d.ts",
-        "default": "./dist/dev.js"
-      }
-    },
+    "solid": "./dist/index.jsx",
     "import": {
       "types": "./dist/index.d.ts",
       "default": "./dist/index.js"
