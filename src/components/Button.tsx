@@ -8,8 +8,18 @@ interface ButtonProps extends DefaultProps {
 }
 
 export const Button: Component<ButtonProps> = (props) => {
-    const {name, onClick} = props;
     return (
-        <button class={`soup-element soup-button ${props.class ?? ""}`} onClick={onClick}>{name}</button>
+        <button class={`soup-element soup-button ${props.class ?? ""}`} onClick={props.onClick}>{props.name}</button>
     );
 };
+
+interface LinkProps extends DefaultProps {
+    name: string;
+    href: string;
+}
+
+export const Link: Component<LinkProps> = (props) => {
+    return (
+        <a class={`soup-element soup-button ${props.class ?? ""}`} href={props.href}>{props.name}</a>
+    );
+}

@@ -5,7 +5,7 @@ import {
     Dropdown,
     GenderPicker,
     Grid,
-    Input,
+    Input, Link,
     Notifications,
     Number,
     Picker2DValue,
@@ -42,6 +42,7 @@ const Thingymabobs: Component = () => {
         <Input placeholder="Type something..." value={inputValue()} setValue={setInputValue}/>
         <Switch name="Toggle me!" value={switchValue()} setValue={setSwitchValue}/>
         <Button name="Click me!" onClick={() => setDialogOpen(true)}/>
+        <Link name="Google" href="https://google.com"/>
         <Dropdown
             options={dropdownOptions}
             selected={selected()}
@@ -51,8 +52,8 @@ const Thingymabobs: Component = () => {
         <Slider value={slider2Value()} interactive={false}/>
         <Number value={numberValue()} setValue={setNumberValue}/>
         <Number value={number2Value()} setValue={setNumber2Value} min={0} max={10}/>
-        <GenderPicker setValue={setGenderPickerValue}/>
         <Throbber/>
+        <GenderPicker setValue={setGenderPickerValue}/>
         <Dialog positiveText="Yeeee" negativeText="Nuuuu" open={dialogOpen()} setOpen={setDialogOpen}>
             <Throbber/>
             <Slider value={15} interactive={false}/>

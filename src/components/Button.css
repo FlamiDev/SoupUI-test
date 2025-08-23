@@ -1,6 +1,7 @@
 @import "./Soup.css";
 
 .soup-button {
+    text-align: center;
     cursor: pointer;
     transition: background 0.1s ease-out, color 0.1s ease-out;
 }
