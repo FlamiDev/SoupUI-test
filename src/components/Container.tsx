@@ -2,11 +2,14 @@ import {Component, JSX, JSXElement} from "solid-js";
 import "./Container.css"
 import {DefaultProps} from "./helpers.tsx";
 
-export interface ContainerProps extends DefaultProps {
-    children: JSXElement;
+export interface ChildlessContainerProps extends DefaultProps {
     width?: number,
     height?: number,
     background?: string,
+}
+
+export interface ContainerProps extends ChildlessContainerProps {
+    children: JSXElement;
 }
 
 export const Container: Component<ContainerProps> = (props) => {

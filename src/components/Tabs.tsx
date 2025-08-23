@@ -1,13 +1,14 @@
-import {ContainerProps} from "./Container.tsx";
-import {createSignal, For, JSX, JSXElement, Show} from "solid-js";
+import {ChildlessContainerProps} from "./Container.tsx";
+import {createMemo, For, JSX, JSXElement, Show} from "solid-js";
 import "./Tabs.css";
 
-interface TabsProps<N extends Readonly<string[]>> extends ContainerProps {
-    tabNames: Readonly<N>;
-    children: JSXElement[] & { length: N["length"] };
+interface TabsProps<T extends { [N in string]: JSXElement }> extends ChildlessContainerProps {
+    tabs: T;
+    activeTab: keyof T;
+    setActiveTab: (tab: keyof T) => void;
 }
 
-export const Tabs = <N extends Readonly<string[]>>(props: TabsProps<N>) => {
+export const Tabs = <T extends { [N in string]: JSXElement }>(props: TabsProps<T>) => {
     const style = () => {
         const style: JSX.CSSProperties = {
             background: props.background ?? "white",
@@ -21,31 +22,32 @@ export const Tabs = <N extends Readonly<string[]>>(props: TabsProps<N>) => {
         return style;
     }
 
-    const [activeTab, setActiveTab] = createSignal<number>(0);
+    const tabsEntries = createMemo(() => Object.entries(props.tabs));
+    const activeTabIndex = () => tabsEntries().findIndex(([key]) => key === props.activeTab);
 
     const headerStyle = () => ({
-        "--tabs-count": props.tabNames.length,
-        "--tab-active": activeTab()
+        "--tabs-count": tabsEntries().length,
+        "--tab-active": activeTabIndex()
     } as JSX.CSSProperties)
 
     return <div class={`soup-tabs-container ${props.class ?? ""}`} style={style()}>
         <div class="soup-tabs-header" style={headerStyle()}>
-            <For each={props.tabNames}>
-                {(tabName, index) => {
+            <For each={tabsEntries()}>
+                {([tabName]) => {
                     return <button
                         class="soup-tabs-button"
-                        onClick={() => setActiveTab(index())}
+                        onClick={() => props.setActiveTab(tabName)}
                     >
                         {tabName}
                     </button>
                 }}
             </For>
         </div>
-        <For each={props.children}>
-            {(child, index) => {
-                return <Show when={index() === activeTab()}>
+        <For each={tabsEntries()}>
+            {([name, tab]) => {
+                return <Show when={name === props.activeTab}>
                     <div class="soup-tabs-content">
-                        {child}
+                        {tab}
                     </div>
                 </Show>
             }}

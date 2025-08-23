@@ -5,7 +5,8 @@ import {
     Dropdown,
     GenderPicker,
     Grid,
-    Input, Link,
+    Input,
+    Link,
     Notifications,
     Number,
     Picker2DValue,
@@ -16,7 +17,7 @@ import {
     useNotifications
 } from 'src';
 
-const Thingymabobs: Component = () => {
+const MainTab: Component = () => {
     const notify = useNotifications()
 
     const [inputValue, setInputValue] = createSignal("");
@@ -38,7 +39,7 @@ const Thingymabobs: Component = () => {
 
     setInterval(() => setSlider2Value(prev => (prev + 5) % 105), 500);
 
-    return <>
+    return <Grid cols={2} rows={"auto"} compact>
         <Input placeholder="Type something..." value={inputValue()} setValue={setInputValue}/>
         <Switch name="Toggle me!" value={switchValue()} setValue={setSwitchValue}/>
         <Button name="Click me!" onClick={() => setDialogOpen(true)}/>
@@ -58,7 +59,7 @@ const Thingymabobs: Component = () => {
             <Throbber/>
             <Slider value={15} interactive={false}/>
         </Dialog>
-    </>
+    </Grid>
 }
 
 const App: Component = () => {
@@ -70,15 +71,16 @@ const App: Component = () => {
     align-items: center;
     justify-content: center;
     `
+
+    const [activeTab, setActiveTab] = createSignal<"Main" | "Test">("Main");
+
     return (
         <div style={style}>
             <Notifications>
-                <Tabs tabNames={["Main", "Test"]} width={800} height={800}>
-                    <Grid cols={2} rows={"auto"} compact>
-                        <Thingymabobs/>
-                    </Grid>
-                    <h1>Test tab</h1>
-                </Tabs>
+                <Tabs activeTab={activeTab()} setActiveTab={setActiveTab} tabs={{
+                    Main: <MainTab/>,
+                    Test: <h1>Test tab</h1>
+                }} width={800} height={800}/>
             </Notifications>
         </div>
     );
