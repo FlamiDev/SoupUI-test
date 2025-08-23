@@ -13,10 +13,10 @@ export const Tabs = <N extends Readonly<string[]>>(props: TabsProps<N>) => {
             background: props.background ?? "white",
         }
         if (props.width) {
-            style.width = `${props.width}px`;
+            style["max-width"] = `${props.width}px`;
         }
         if (props.height) {
-            style.height = `${props.height}px`;
+            style["max-height"] = `${props.height}px`;
         }
         return style;
     }
